@@ -22,7 +22,7 @@ function varargout = test1(varargin)
 
 % Edit the above text to modify the response to help test1
 
-% Last Modified by GUIDE v2.5 10-Sep-2017 16:48:04
+% Last Modified by GUIDE v2.5 10-Sep-2017 21:58:17
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -106,8 +106,7 @@ switch val
            handles.current_data =  handles.membrane;
     case 3
             handles.current_data =  handles.sinc;
-    case 4
-            handles.current_data =  handles.sin;
+  
 end
  guidata(hObject,handles);
 
@@ -146,3 +145,11 @@ function contour_pushbutton_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 
 contour(handles.current_data);
+
+
+% --- Executes on button press in surfl_pushbutton.
+function surfl_pushbutton_Callback(hObject, eventdata, handles)
+% hObject    handle to surfl_pushbutton (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+surfl(handles.current_data)
