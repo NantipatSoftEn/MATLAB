@@ -63,7 +63,6 @@ sinc = sin(r)./r;
 
 handles.sinc = sinc;
 
-
 handles.current_data = handles.peaks;
 
 surf(handles.current_data);
@@ -106,8 +105,6 @@ switch val
            handles.current_data =  handles.membrane;
     case 3
             handles.current_data =  handles.sinc;
-    case 4
-            handles.current_data =  handles.sin;
 end
  guidata(hObject,handles);
 
