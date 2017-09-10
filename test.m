@@ -22,7 +22,7 @@ function varargout = test(varargin)
 
 % Edit the above text to modify the response to help test
 
-% Last Modified by GUIDE v2.5 10-Sep-2017 10:07:40
+% Last Modified by GUIDE v2.5 10-Sep-2017 11:54:31
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -94,18 +94,18 @@ plot (0:.1:10)
 
 
 
-function interceptBox_Callback(hObject, eventdata, handles)
-% hObject    handle to interceptBox (see GCBO)
+function y_Callback(hObject, eventdata, handles)
+% hObject    handle to y (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Hints: get(hObject,'String') returns contents of interceptBox as text
-%        str2double(get(hObject,'String')) returns contents of interceptBox as a double
+% Hints: get(hObject,'String') returns contents of y as text
+%        str2double(get(hObject,'String')) returns contents of y as a double
 
 
 % --- Executes during object creation, after setting all properties.
-function interceptBox_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to interceptBox (see GCBO)
+function y_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to y (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
@@ -117,18 +117,18 @@ end
 
 
 
-function slopBox_Callback(hObject, eventdata, handles)
-% hObject    handle to slopBox (see GCBO)
+function slope_Callback(hObject, eventdata, handles)
+% hObject    handle to slope (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Hints: get(hObject,'String') returns contents of slopBox as text
-%        str2double(get(hObject,'String')) returns contents of slopBox as a double
+% Hints: get(hObject,'String') returns contents of slope as text
+%        str2double(get(hObject,'String')) returns contents of slope as a double
 
 
 % --- Executes during object creation, after setting all properties.
-function slopBox_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to slopBox (see GCBO)
+function slope_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to slope (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
@@ -144,8 +144,26 @@ function solve_Callback(hObject, eventdata, handles)
 % hObject    handle to solve (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-a = strnum
 
+a = str2num(get(handles.a,'String'));
+b = str2num(get(handles.b,'String'));
+c = str2num(get(handles.c,'String'));
+
+int = num2str(c/b);
+slope = num2str(-a/b);
+
+set(handles.y,'String',int);
+ 
+set(handles.slope,'String',slope);
+ 
+x=0:10;
+y=c/b - a/b*x;
+
+axes(handles.axes4);
+plot(x,y);
+%  xlabel('x');
+%  ylable('y');
+%  guidata(hObject.handles);
 
 function b_Callback(hObject, eventdata, handles)
 % hObject    handle to b (see GCBO)
