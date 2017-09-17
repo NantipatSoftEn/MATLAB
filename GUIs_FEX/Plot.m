@@ -1,26 +1,11 @@
-function [] = GUI_41()
-% Demonstrate how to save and load the state of a GUI system.
-% Creates a GUI which allows the user to plot one of four types of
-% polynomials.  When the pushbutton is pressed, a new GUI is created which
-% displays the coefficients used to create the polynomial, and another
-% figure is made which plots the polynomial over a simple range.  The main
-% GUI has two menus which allow the user to save the state of the system
-% and load the state of the system.
-%
-% Suggested exercise:  Modify the code so that the coefficients in the 
-% second GUI can be user defined.  You will have to ensure that the
-% radiobutton in the first GUI accurately reflects the user's choice, and
-% the plot gets updated after the edit.
-%
-%
-% Author:  Matt Fig
-% Date: 7/30/09
+function [] = Plot()
+
 
 S.X = -10:.01:10;  % The X values for plotting.
 S.fh = figure('units','pixels',...
               'position',[200 250 250 200],...
               'menubar','none',...
-              'name','GUI_41',...
+              'name','Plot',...
               'numbertitle','off',...
               'resize','off',...
               'closerequestfcn',{@fh_crfcn});

@@ -1,15 +1,5 @@
-function [] = GUI_30()
-% Same as GUI_29, except uses callback strings.
-% Uses callback strings.  Strings are evaluated in command window using
-% eval, so we need to make the strings find the objects needed.  For this
-% use findobj.  This is included simply as a reference to an older style.
-% Callback strings are evaluated in the base workspace, so when using this
-% style this MUST be taken into account. (Note that this style of callback
-% is generally not recommended, for good reasons.)
-%
-%
-% Author:  Matt Fig
-% Date:  7/15/2009
+function [] = Setline()
+
 
 % First create the figure and plot to manipulate with the slider.
 x = 0:.1:100;  % Some simple data.
@@ -25,7 +15,7 @@ cbs = ['set(findobj(''tag'',''axes1''),''xlim'',',...
 S.fh = figure('units','pixels',...
               'position',[400 400 220 40],...
               'menubar','none',...
-              'name','GUI_30',...
+              'name','Setline',...
               'numbertitle','off',...
               'resize','off');
 S.sl = uicontrol('style','slide',...

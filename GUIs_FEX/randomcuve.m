@@ -1,24 +1,10 @@
-function [] = GUI_35()
-% Demonstrate how to use toggle buttons to mimic tabbed panels.  
-% Creates a GUI with three toggle buttons which act as tabs.  One of the 
-% tabs is not selectable until the user plots a random quartic by 
-% pressing the pushbutton at the bottom of the screen.  The middle tab 
-% shows the result of fitting (with polyfit) a polynomial to the "unknown" 
-% quartic.  
-%
-% Suggested exercise:  Add another tab which contains help info for how to
-% use the GUI.
-%
-% 
-% Author:  Matt Fig
-% Date:  7/15/2009
-
+function [] = randomcuve()
 SCR = get(0,'Screensize');  % Get screensize.
 S.fh = figure('numbertitle','off',...
               'menubar','none',...
               'units','pixels',...
               'position',[SCR(3)/2-200 ,SCR(4)/2-200 , 400, 400],...
-              'name','GUI_35',...
+              'name','randomcuve',...
               'resize','off');
 S.ax = axes('units','pixels',...
             'position',[50 100 300 230]);

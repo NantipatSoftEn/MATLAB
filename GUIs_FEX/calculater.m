@@ -1,21 +1,12 @@
-function [] = GUI_33()
-% Demonstrate how to export data with context menu.
-% Demonstrate how to get data from a GUI into the base workspace without
-% "poofing" unawares.  This is based on GUI_31.  When user is ready to
-% retrieve the data, simply right-click anywhere inside the figure to get 
-% to the context menu.  User will be prompted to enter a variable name to 
-% which will be assigned the data in the base workspace.
-%
-%
-% Author:  Matt Fig
-% Date:  7/15/2009
+function [] = calculater()
+
 
 S.CNT = 0;  % The number of times user pressed the pushbutton.
 S.CHC = [];  % Holds the strings which represent the operations performed.
 S.fh = figure('units','pixels',...
               'position',[400 400 300 130],...
               'menubar','none',...
-              'name','GUI_33',...
+              'name','calculater',...
               'numbertitle','off',...
               'resize','off');
 COL = get(S.fh,'color');          

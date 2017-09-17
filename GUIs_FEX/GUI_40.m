@@ -1,11 +1,5 @@
 function [] = GUI_40()
-% Demonstrate how to use an image as a background of a GUI.
-% A GUI is created which has the clown as its background.  Also
-% demonstrated are several buttons which appear to be part of the image.
-%
-%
-% Author:  Matt Fig
-% Date:  1/15/2010
+
 
 S.fh = figure('units','pixels',...
               'position',[400 400 480 300],...
