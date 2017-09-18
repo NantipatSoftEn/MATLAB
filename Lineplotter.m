@@ -1,30 +1,5 @@
 function varargout = Lineplotter(varargin)
-% LINEPLOTTER MATLAB code for Lineplotter.fig
-%      LINEPLOTTER, by itself, creates a new LINEPLOTTER or raises the existing
-%      singleton*.
-%
-%      H = LINEPLOTTER returns the handle to a new LINEPLOTTER or the handle to
-%      the existing singleton*.
-%
-%      LINEPLOTTER('CALLBACK',hObject,eventData,handles,...) calls the local
-%      function named CALLBACK in LINEPLOTTER.M with the given input arguments.
-%
-%      LINEPLOTTER('Property','Value',...) creates a new LINEPLOTTER or raises the
-%      existing singleton*.  Starting from the left, property value pairs are
-%      applied to the GUI before Lineplotter_OpeningFcn gets called.  An
-%      unrecognized property name or invalid value makes property application
-%      stop.  All inputs are passed to Lineplotter_OpeningFcn via varargin.
-%
-%      *See GUI Options on GUIDE's Tools menu.  Choose "GUI allows only one
-%      instance to run (singleton)".
-%
-% See also: GUIDE, GUIDATA, GUIHANDLES
 
-% Edit the above text to modify the response to help Lineplotter
-
-% Last Modified by GUIDE v2.5 10-Sep-2017 23:08:18
-
-% Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
 gui_State = struct('gui_Name',       mfilename, ...
                    'gui_Singleton',  gui_Singleton, ...
@@ -46,13 +21,7 @@ end
 
 % --- Executes just before Lineplotter is made visible.
 function Lineplotter_OpeningFcn(hObject, eventdata, handles, varargin)
-% This function has no output args, see OutputFcn.
-% hObject    handle to figure
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-% varargin   command line arguments to Lineplotter (see VARARGIN)
 
-% Choose default command line output for Lineplotter
 handles.output = hObject;
 
 % Update handles structure
@@ -64,23 +33,13 @@ guidata(hObject, handles);
 
 % --- Outputs from this function are returned to the command line.
 function varargout = Lineplotter_OutputFcn(hObject, eventdata, handles) 
-% varargout  cell array for returning output args (see VARARGOUT);
-% hObject    handle to figure
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
 
-% Get default command line output from handles structure
 varargout{1} = handles.output;
 
 
 
 function a_Callback(hObject, eventdata, handles)
-% hObject    handle to a (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
 
-% Hints: get(hObject,'String') returns contents of a as text
-%        str2double(get(hObject,'String')) returns contents of a as a double
 
 
 % --- Executes during object creation, after setting all properties.
