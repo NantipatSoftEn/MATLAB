@@ -37,7 +37,14 @@ S.pb = uicontrol('style','push',...
                  'position',[75 20 100 30],...
                  'string','Plot & Get Coeffs',...
                  'callback',{@pb_call});
-      
+S.fm = uimenu(S.fh,...
+              'label','Save State',...
+              'callback',{@fm_call},...
+              'enable','off');
+S.fm(2) = uimenu(S.fh,...
+                 'label','Load State',...
+                 'callback',{@fm_call},...
+                 'enable','on');          
 
              
     function [] = pb_call(varargin)
@@ -45,7 +52,7 @@ S.pb = uicontrol('style','push',...
         S.RP = round((rand(1,5)*5-rand(1,5)*5)*100)/100;  % Ran polynomial.
         sel = findobj(get(S.bg,'selectedobject'));  % See BUG note in GUI_8
         S.SEL = find(S.rd==sel);  % Store current radiobutton.
-      
+        set(S.fm,{'enable'},{'on';'off'}) % Switch available menu ops.
         
         switch sel
             case S.rd(1) % Linear
@@ -117,7 +124,30 @@ S.pb = uicontrol('style','push',...
     end
 
 
-    
+    function [] = fm_call(varargin)
+    % Callback for the figure menu.
+        switch gcbo
+            case S.fm(1)
+                % Get a name.
+                N = inputdlg('Enter Name of Save File','FileName');
+                set(S.fh(2),'userdata',S.SEL)
+                hgsave(S.fh(2:3),[N{1},'.mat'],'all')
+            case S.fm(2)
+                fn = uigetfile('*.mat','Select Saved File');
+                
+                try
+                    S.fh(2:3) = hgload(fn);
+                    S.ax = get(S.fh(2),'children');
+                    ch = get(S.fh(3),'children');
+                    S.ed(5:-1:1) = ch(1:5);
+                    S.SEL = get(S.fh(2),'userdata');
+                    set(S.bg,'selectedobjec',S.rd(S.SEL))
+                catch
+                    disp('Unable to Load.  Check Name and Try Again.')
+                end
+            otherwise
+        end
+    end
 
 
     function [] = fh_crfcn(varargin)
@@ -125,3 +155,4 @@ S.pb = uicontrol('style','push',...
        delete(S.fh) % Delete all figures stored in structure. 
     end
 end
+             

@@ -19,8 +19,7 @@ S.pb1 = uicontrol('style','pushbutton',...
                   'position',[50 20 300 40],...
                   'string','Plot Random Quartic Polynomial',...
                   'fontsize',12);
-              
-% การสลับจะทำหน้าที่เป็นแท็บ      
+ % การสลับจะทำหน้าที่เป็นแท็บ      
 
 S.tg(1) = uicontrol('style','toggle',...
                     'units','pixels',...
@@ -50,7 +49,7 @@ S.tx = uicontrol('style','text',...
                  'by Software engineer'},...
                  'fontsize',20,'fontweight','bold');
              
-W = {'style','edit','units','pixels','position'};  % Save some typing.   
+             W = {'style','edit','units','pixels','position'};  % Save some typing.   
 
 % พิกัดต่ำแหน่งของส่วนต่างๆที่จะประกอบกัน
 
@@ -72,6 +71,7 @@ function [] = pb_call(varargin)
 x = -10:.1:10; % ตัวแปรสำหรับแสดงผลกราฟ.
 plot(x,polyval(-5 + ceil(rand(1,5)*7),x));  % มีการสุ่มค่าลงในกราฟ
 set(varargin{3}.tg(2),'enable','on');  % พอมีกราฟ fittap ก็จะทำงาน
+
 
 
 function [] = tg_call(varargin)
@@ -108,3 +108,5 @@ switch h
         set(S.tx,'visible','on')
         set([S.ax;S.pb1;L;S.ed(:)],{'visible'},{'off'})     
 end
+             
+              
