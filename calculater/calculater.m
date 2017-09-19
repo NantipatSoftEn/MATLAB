@@ -87,24 +87,6 @@ if varargin{1}==S.pb  % This stuff we only need to do if button is pushed.
 end
 
 
-function [] = um_call(varargin)
-S = varargin{3};  % Get the structure.
-% Create our input dialog box args.
-prompt = 'Name of the variable to create?';
-name = 'Enter a variable name.';
-numlines = 1;
-defaultanswer = {'MyData'};
-var = '5t;-';  % An invalid variable name.
-% Note that there should be an error check in here in case the user entered
-% an invalid variable name.
-while ~isvarname(var)
-    var = inputdlg(prompt,name,numlines,defaultanswer);
-    var = var{1};
-end
-
-assignin('base',var,S.CHC) % Assign the data to the base workspace.
-% If one wanted, a msgbox could be added here to let the user know that the
-% data is now available in the base workspace.
 
 
 

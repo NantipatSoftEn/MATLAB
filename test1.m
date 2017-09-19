@@ -95,7 +95,7 @@ function surf_pushbutton_Callback(hObject, eventdata, handles)
 
 surf(handles.current_data);
 
-% --- Executes on button press in Mesh.
+% --- Executes on button press in Mesh.++*+
 function Mesh_Callback(hObject, eventdata, handles)
 
 
@@ -111,4 +111,4 @@ contour(handles.current_data);
 % --- Executes on button press in surfl_pushbutton.
 function surfl_pushbutton_Callback(hObject, eventdata, handles)
 
-surfl(handles.current_data)
+
