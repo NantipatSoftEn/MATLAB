@@ -1,19 +1,19 @@
 function varargout = stat(varargin)
-% STAT MATLAB code for stat.fig
+%STAT MATLAB code file for stat.fig
 %      STAT, by itself, creates a new STAT or raises the existing
 %      singleton*.
 %
 %      H = STAT returns the handle to a new STAT or the handle to
 %      the existing singleton*.
 %
-%      STAT('CALLBACK',hObject,eventData,handles,...) calls the local
-%      function named CALLBACK in STAT.M with the given input arguments.
+%      STAT('Property','Value',...) creates a new STAT using the
+%      given property value pairs. Unrecognized properties are passed via
+%      varargin to stat_OpeningFcn.  This calling syntax produces a
+%      warning when there is an existing singleton*.
 %
-%      STAT('Property','Value',...) creates a new STAT or raises the
-%      existing singleton*.  Starting from the left, property value pairs are
-%      applied to the GUI before stat_OpeningFcn gets called.  An
-%      unrecognized property name or invalid value makes property application
-%      stop.  All inputs are passed to stat_OpeningFcn via varargin.
+%      STAT('CALLBACK') and STAT('CALLBACK',hObject,...) call the
+%      local function named CALLBACK in STAT.M with the given input
+%      arguments.
 %
 %      *See GUI Options on GUIDE's Tools menu.  Choose "GUI allows only one
 %      instance to run (singleton)".
@@ -22,7 +22,7 @@ function varargout = stat(varargin)
 
 % Edit the above text to modify the response to help stat
 
-% Last Modified by GUIDE v2.5 21-Sep-2017 21:24:18
+% Last Modified by GUIDE v2.5 21-Sep-2017 23:22:56
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -30,10 +30,10 @@ gui_State = struct('gui_Name',       mfilename, ...
                    'gui_Singleton',  gui_Singleton, ...
                    'gui_OpeningFcn', @stat_OpeningFcn, ...
                    'gui_OutputFcn',  @stat_OutputFcn, ...
-                   'gui_LayoutFcn',  [] , ...
+                   'gui_LayoutFcn',  [], ...
                    'gui_Callback',   []);
 if nargin && ischar(varargin{1})
-    gui_State.gui_Callback = str2func(varargin{1});
+   gui_State.gui_Callback = str2func(varargin{1});
 end
 
 if nargout
@@ -50,7 +50,8 @@ function stat_OpeningFcn(hObject, eventdata, handles, varargin)
 % hObject    handle to figure
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-% varargin   command line arguments to stat (see VARARGIN)
+% varargin   unrecognized PropertyName/PropertyValue pairs from the
+%            command line (see VARARGIN)
 
 % Choose default command line output for stat
 handles.output = hObject;
@@ -63,7 +64,7 @@ guidata(hObject, handles);
 
 
 % --- Outputs from this function are returned to the command line.
-function varargout = stat_OutputFcn(hObject, eventdata, handles) 
+function varargout = stat_OutputFcn(hObject, eventdata, handles)
 % varargout  cell array for returning output args (see VARARGOUT);
 % hObject    handle to figure
 % eventdata  reserved - to be defined in a future version of MATLAB
@@ -96,13 +97,28 @@ if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgr
 end
 
 
-% --- Executes on button press in pushbutton1.
-function pushbutton1_Callback(hObject, eventdata, handles)
-% hObject    handle to pushbutton1 (see GCBO)
+% --- Executes on button press in Solve.
+function Solve_Callback(hObject, eventdata, handles)
+% hObject    handle to Solve (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+a = str2num(get(handles.a,'String'));
+b = str2num(get(handles.b,'String'));
+c = str2num(get(handles.c,'String'));
+d = str2num(get(handles.d,'String'));
+e = str2num(get(handles.e,'String'));
 
+xbar = (a+b+c+d+e)/5;
 
+data = [a b c d e];
+med = median(data)
+m = mode(data)
+
+set(handles.me,'String',med);
+
+set(handles.xbar,'String',xbar);
+
+set(handles.mode,'String',m);
 
 function b_Callback(hObject, eventdata, handles)
 % hObject    handle to b (see GCBO)
@@ -219,18 +235,41 @@ end
 
 
 
-function med_Callback(hObject, eventdata, handles)
-% hObject    handle to med (see GCBO)
+function me_Callback(hObject, eventdata, handles)
+% hObject    handle to me (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Hints: get(hObject,'String') returns contents of med as text
-%        str2double(get(hObject,'String')) returns contents of med as a double
+% Hints: get(hObject,'String') returns contents of me as text
+%        str2double(get(hObject,'String')) returns contents of me as a double
 
 
 % --- Executes during object creation, after setting all properties.
-function med_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to med (see GCBO)
+function me_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to me (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+function mode_Callback(hObject, eventdata, handles)
+% hObject    handle to mode (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of mode as text
+%        str2double(get(hObject,'String')) returns contents of mode as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function mode_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to mode (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
