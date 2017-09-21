@@ -13,7 +13,7 @@ COL = get(S.fh,'color');
 S.pp = uicontrol('style','pop',...
                   'unit','pix',...
                   'position',[10 20 120 30],...
-                  'string',{'Add';'Multiply';'Subtract';'Divide';'Power'});
+                  'string',{'Add';'Multiply';'Subtract';'Divide';'Power';'mod';,'rem';'nthroot';'gcd';'lcm'});
 S.ed(1) = uicontrol('style','edit',...
                     'unit','pix',...
                     'position',[10 90 70 30],...
@@ -73,7 +73,24 @@ switch VL{1}{VL{2}}  % User's string choice from popup.
     case 'Power'
         A = N(1).^N(2);
         str = '^';
+    case 'mod'
+         A = mod(N(1),N(2)); % การหารเอาเศษทีเหลือ mod(4,-10) = 6    
+        str = '%';
+     case 'rem'
+         A = rem(N(1),N(2)); %  rem(4,-10) = 4
+        str = 'r';
+     case 'nthroot'
+         A = nthroot(N(1),N(2)); %  nthroot(-27, 3) = -3
+        str = 'nr';
+      case 'gcd'
+         A = gcd(N(1),N(2)); %  หรม
+        str = 'g';
+       case 'lcm'
+         A = lcm(N(1),N(2)); %  ครน
+        str = 'L';
     otherwise
+        % เพิ่มเติมได้ที่ https://www.mathworks.com/help/matlab/discrete-math.html
+        % https://www.mathworks.com/matlabcentral/answers/221157-diffrence-between-rem-and-mod
 end
 
 set(S.tx(1),'string',str)  % Set the operation display.
