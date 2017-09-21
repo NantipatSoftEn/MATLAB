@@ -22,7 +22,7 @@ function varargout = stat(varargin)
 
 % Edit the above text to modify the response to help stat
 
-% Last Modified by GUIDE v2.5 21-Sep-2017 23:22:56
+% Last Modified by GUIDE v2.5 22-Sep-2017 00:02:03
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -111,15 +111,15 @@ e = str2num(get(handles.e,'String'));
 xbar = (a+b+c+d+e)/5;
 
 data = [a b c d e];
-med = median(data)
-m = mode(data)
-
+med = median(data);
+m = mode(data);
+sd = std(data);
 set(handles.me,'String',med);
 
 set(handles.xbar,'String',xbar);
 
 set(handles.mode,'String',m);
-
+set(handles.sd,'String',sd);
 function b_Callback(hObject, eventdata, handles)
 % hObject    handle to b (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
@@ -270,6 +270,29 @@ function mode_Callback(hObject, eventdata, handles)
 % --- Executes during object creation, after setting all properties.
 function mode_CreateFcn(hObject, eventdata, handles)
 % hObject    handle to mode (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+function sd_Callback(hObject, eventdata, handles)
+% hObject    handle to sd (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of sd as text
+%        str2double(get(hObject,'String')) returns contents of sd as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function sd_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to sd (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 

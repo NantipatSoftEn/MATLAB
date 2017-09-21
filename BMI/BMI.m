@@ -22,7 +22,7 @@ function varargout = BMI(varargin)
 
 % Edit the above text to modify the response to help BMI
 
-% Last Modified by GUIDE v2.5 20-Sep-2017 06:07:35
+% Last Modified by GUIDE v2.5 21-Sep-2017 23:58:04
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -54,8 +54,6 @@ function BMI_OpeningFcn(hObject, eventdata, handles, varargin)
 
 % Choose default command line output for BMI
 handles.output = hObject;
-axes(handles.axes1);
-
 
 % Update handles structure
 guidata(hObject, handles);
@@ -76,18 +74,18 @@ varargout{1} = handles.output;
 
 
 
-function feet_Callback(hObject, eventdata, handles)
-% hObject    handle to feet (see GCBO)
+function w_Callback(hObject, eventdata, handles)
+% hObject    handle to w (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Hints: get(hObject,'String') returns contents of feet as text
-%        str2double(get(hObject,'String')) returns contents of feet as a double
+% Hints: get(hObject,'String') returns contents of w as text
+%        str2double(get(hObject,'String')) returns contents of w as a double
 
 
 % --- Executes during object creation, after setting all properties.
-function feet_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to feet (see GCBO)
+function w_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to w (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
@@ -99,18 +97,18 @@ end
 
 
 
-function inches_Callback(hObject, eventdata, handles)
-% hObject    handle to inches (see GCBO)
+function h_Callback(hObject, eventdata, handles)
+% hObject    handle to h (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Hints: get(hObject,'String') returns contents of inches as text
-%        str2double(get(hObject,'String')) returns contents of inches as a double
+% Hints: get(hObject,'String') returns contents of h as text
+%        str2double(get(hObject,'String')) returns contents of h as a double
 
 
 % --- Executes during object creation, after setting all properties.
-function inches_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to inches (see GCBO)
+function h_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to h (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
@@ -121,55 +119,30 @@ if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgr
 end
 
 
+% --- Executes on button press in Calculater.
+function Calculater_Callback(hObject, eventdata, handles)
+% hObject    handle to Calculater (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+w = str2num(get(handles.w,'String'));
+h = str2num(get(handles.h,'String'));
 
-function punds_Callback(hObject, eventdata, handles)
-% hObject    handle to punds (see GCBO)
+b = w/(h*h);
+set(handles.bmi,'String',b);
+
+
+function bmi_Callback(hObject, eventdata, handles)
+% hObject    handle to bmi (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Hints: get(hObject,'String') returns contents of punds as text
-%        str2double(get(hObject,'String')) returns contents of punds as a double
+% Hints: get(hObject,'String') returns contents of bmi as text
+%        str2double(get(hObject,'String')) returns contents of bmi as a double
 
 
 % --- Executes during object creation, after setting all properties.
-function punds_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to punds (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    empty - handles not created until after all CreateFcns called
-
-% Hint: edit controls usually have a white background on Windows.
-%       See ISPC and COMPUTER.
-if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
-    set(hObject,'BackgroundColor','white');
-end
-
-
-% --- Executes on button press in pushbutton1.
-function pushbutton1_Callback(hObject, eventdata, handles)
-% hObject    handle to pushbutton1 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-
-
-function BMI_Callback(hObject, eventdata, handles)
-% hObject    handle to BMI (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-% Hints: get(hObject,'String') returns contents of BMI as text
-%        str2double(get(hObject,'String')) returns contents of BMI as a double
-a = str2num(get(handles.feet,'string'));
-b = str2num(get(handles.inches,'string'));
-c = str2num(get(handles.pound,'string'));
-a2 = a*12;
-mass = 703*((c/(a2+b)^2));
-bmi = num2str(mass);
-set(handles.BMI,'string',bmi);
-
-% --- Executes during object creation, after setting all properties.
-function BMI_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to BMI (see GCBO)
+function bmi_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to bmi (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
