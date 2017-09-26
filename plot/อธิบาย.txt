@@ -1,0 +1,16 @@
+อันนี้เราจะไว้ใช้หากราฟรูปแบบต่างๆ เพื่อเทียบกับสมการว่าตรงกันรึปร่าว
+(Polynomial Function)
+Linear คือเส้นตรง
+https://th.wikipedia.org/wiki/สมการเชิงเส้น
+
+
+Cubic คือเส้นตรงกำลังสาม หรือสมการกำลังสาม 
+https://th.wikipedia.org/wiki/สมการกำลังสาม
+
+
+Quadratic คือสมการกำลังสอง
+https://th.wikipedia.org/wiki/สมการกำลังสอง
+ดูหน้าตากราฟให้เปิด .pdf  หน้าที่ 14
+
+Quartic นี้จะคล้ายๆQuadratic
+https://en.wikipedia.org/wiki/Quartic_function
