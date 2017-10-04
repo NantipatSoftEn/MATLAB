@@ -122,8 +122,37 @@ S.fm(2) = uimenu(S.fh,...
         figure(S.fh(2))  % Make this figure current for plotting
         plot(S.X,S.Y,S.COL)  % And plot it.
     end
+
+
+    function [] = fm_call(varargin)
+    % Callback for the figure menu.
+        switch gcbo
+            case S.fm(1)
+                % Get a name.
+                N = inputdlg('Enter Name of Save File','FileName');
+                set(S.fh(2),'userdata',S.SEL)
+                hgsave(S.fh(2:3),[N{1},'.mat'],'all')
+            case S.fm(2)
+                fn = uigetfile('*.mat','Select Saved File');
+                
+                try
+                    S.fh(2:3) = hgload(fn);
+                    S.ax = get(S.fh(2),'children');
+                    ch = get(S.fh(3),'children');
+                    S.ed(5:-1:1) = ch(1:5);
+                    S.SEL = get(S.fh(2),'userdata');
+                    set(S.bg,'selectedobjec',S.rd(S.SEL))
+                catch
+                    disp('Unable to Load.  Check Name and Try Again.')
+                end
+            otherwise
+        end
+    end
+
+
     function [] = fh_crfcn(varargin)
     % Closerequestfcn for figures.
        delete(S.fh) % Delete all figures stored in structure. 
     end
 end
+             
