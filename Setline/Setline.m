@@ -2,13 +2,17 @@ function [] = Setline()
 
 
 
-x = 0:.1:100;  % สร้างตัวเลขขึ้นมาสำหรับทำกราฟ
+x = 0:.1:1000;  % สร้างตัวเลขขึ้นมาสำหรับทำกราฟ
 f = figure;  % ให้ f = โปรแกรมเริ่มต้น
 plot(x,sin(x));    %สร้างกราฟขึ้นมา
-
+xlabel('Axis X')
+ylabel('Axis Y')
+title('Graph of Sine and Cosine Between -2\pi and 2\pi')
+dcm_obj = datacursormode(f);
 xlim([0,pi]);  % Set the beginning x/y limits.
 ylim([-1,1])
-
+set(dcm_obj,'DisplayStyle','datatip',...
+    'SnapToDataVertex','off','Enable','on')
 set(gca,'tag','axes1');  % This axes will be controlled.
 
 % This string will serve as a callback string.
@@ -26,7 +30,7 @@ cbs = ['set(findobj(''tag'',''axes1''),''xlim'',',...
  S.sl = uicontrol('style','slide',...
                  'unit','pixel',...
                  'position',[10 10 200 20],...
-                 'min',1,'value',pi,'max',100,...
+                 'min',1,'value',pi,'max',1000,...
                  'callback',cbs,...
                  'deletefcn',{@delete,f});
 set(f,'deletef',{@delete,S.fh})  % Closing one closes the other. 
