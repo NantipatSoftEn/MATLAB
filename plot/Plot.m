@@ -113,12 +113,15 @@ S.pb = uicontrol('style','push',...
         
         S.Y = polyval(S.RP,S.X);  % Use this convenient function.
         
+        % ให้ figure(S.fh(2)) ไปเก็บ ใน f ดูต่อที่บรรทัดที่139 %
+        
         f = figure(S.fh(2))  % Make this figure current for plotting
         plot(S.X,S.Y,S.COL)  % And plot it.
         
+        % เพิ่มตรงนี้มา(title,แกน x,y) %
         xlabel('Axis X') % เพิ่มข้อความแกน x
         ylabel('Axis Y') % เพิ่มข้อความแกน y
-        title('dfd');
+       
         switch sel
             case S.rd(1) % Linear
                 title('Linear');
@@ -131,6 +134,9 @@ S.pb = uicontrol('style','push',...
             otherwise
                 % Very unlikely I think.
         end
+        
+        % เอา f มาใส่ใน datacursormode
+        % เพื่อปลดล็อคความสามารถที่ดูค่าบนเส้นได้
         dcm_obj = datacursormode(f);
         set(dcm_obj,'DisplayStyle','datatip',...
     'SnapToDataVertex','off','Enable','on')
@@ -168,4 +174,14 @@ S.pb = uicontrol('style','push',...
        delete(S.fh) % Delete all figures stored in structure. 
     end
 end
-             
+
+%{
+??????????????? 
+??????????????? 
+??????????????? 
+??????????????? 
+???????????????
+??????????????? 
+??????????????? 
+??????????????
+%}
